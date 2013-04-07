@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="assets/css/bootstrap.css" rel="stylesheet">
+		<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="container">
+			<div class="row-fluid">
+				<div class="offset2 span8">
+					<div class="page-header text-center">
+						<h2>Custom Alert & Confirm Dialogs for Twitter Bootstrap</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="offset2 span8">
+					<div class="btn-group">
+						<button type="button" class="btn btn-large btn-primary show-alert">Trigger Alert</button>
+						<button type="button" class="btn btn-large btn-danger confirm">Trigger Confirm</button>
+					</div>
+				</div>
+			</div>
+			<br>
+			<div class="row-fluid">
+				<div class="offset2 span8">
+					<small>Log</small>
+					<pre id="log"></pre>
+				</div>
+			</div>
+		</div>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/bootstrap.js"></script>
+		<script src="assets/js/bootstrap-alert.js"></script>
+		<script type="text/javascript">
+		$(function(){
+			var $log = $('#log');
+			$('button.show-alert').click(function(){
+				$.alert('You triggered an alert.');
+				$log.html('You showed an alert.');
+			});
+			$('button.confirm').click(function(){
+				$.confirm('Please confirm wanting to see an alert.', function(confirmed){
+					if (confirmed) {
+						$.alert('You confirmed wanting to see an alert.');
+						$log.html('You confirmed wanting to see an alert.');
+					}
+					else $log.html('You did not want to see an alert.');
+				});
+			});
+		});
+		</script>
+	</body>
+</html>
